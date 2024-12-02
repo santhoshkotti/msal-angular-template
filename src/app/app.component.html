@@ -1,0 +1,11 @@
+<mat-toolbar class="mat-elevation-z4" colour="primary">
+  <a href="/" class="title">logo</a>
+
+  <a mat-button [routerLink]="['/profile']">Profile</a>
+  <button mat-raised-button *ngIf="!isUserLoggedIn" (click)="login()">Login</button>
+  <button mat-raised-button *ngIf="isUserLoggedIn" (click)="logout()">Logout</button>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+ 
