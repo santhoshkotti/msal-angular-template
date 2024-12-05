@@ -8,13 +8,21 @@ import { AzureAdDemoService } from '../azure-ad-demo.service';
 })
 export class HomeComponent implements OnInit{
 
+  userData:any;
   isUserLoggedIn:boolean = false;
   constructor(private azureAdDemoService:AzureAdDemoService) { }
 
   ngOnInit(): void {
      this.azureAdDemoService.isUserLoggedIn.subscribe(x=>{
         this.isUserLoggedIn=x;
-     })
+     });
+     
+  }
+
+  getData():any{
+    this.azureAdDemoService.getBackendData().subscribe(x=>{
+      this.userData=x;
+   });
   }
 
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,9 +31,9 @@ const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigato
     MsalModule.forRoot(new PublicClientApplication(
       {
               auth: {
-                  clientId: '<client-id>',
+                  clientId: 'fce2a9e4-64b7-4fa7-a902-0ac624609620',
                   redirectUri: 'http://localhost:4200', 
-                  authority: 'https://login.microsoftonline.com/<tenant-id>'
+                  authority: 'https://login.microsoftonline.com/5cf8a49f-a8e9-4c42-a8c4-5e411666758f'
               },
               cache: {
                 cacheLocation: 'localStorage',
@@ -48,7 +49,7 @@ const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigato
     },
     {
       interactionType:InteractionType.Redirect,
-      protectedResourceMap:new Map([['https://graph.microsoft.com/v1.0/me', ['user.read']]])
+      protectedResourceMap:new Map([['https://graph.microsoft.com/v1.0/me', ['user.read']],['http://localhost:3000/api/*', ['api://c5f2e707-5600-43f3-b114-88fd7e8fcd2b/general']]])
     }
   ),
     MatButtonModule,
@@ -56,7 +57,8 @@ const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigato
     MatCardModule,
     MatToolbarModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    HttpClientModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS, 

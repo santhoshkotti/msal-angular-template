@@ -6,4 +6,12 @@
             </div>
         </mat-card-content>
     </mat-card>
+    <button mat-raised-button (click)="getData()">Get Data</button>
+
+    <div *ngIf="userData">
+        {{userData}}
+    </div>
 </div>
+
+
+
